@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QueueLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:QueueLibrary.Node`1">
+            <summary>
+            A class that will represent a single Queue object.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:QueueLibrary.Node`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:QueueLibrary.Node`1"/> class.
+            </summary>
+            <param name="data">Element.</param>
+        </member>
+        <member name="P:QueueLibrary.Node`1.Data">
+            <summary>
+            Gets or sets Element.
+            </summary>
+        </member>
+        <member name="P:QueueLibrary.Node`1.Next">
+            <summary>
+            Gets or sets link to the next Node.
+            </summary>
+        </member>
+        <member name="T:QueueLibrary.Queue`1">
+            <summary>
+            Queue.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.IsEmpty">
+            <summary>
+            Gets a value indicating whether returns an empty Queue.
+            </summary>
+            <returns>True if empty. False if doesn't.</returns>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:QueueLibrary.Queue`1"/> class that is empty.
+            </summary>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:QueueLibrary.Queue`1"/> class that contains.
+            elements copied from the specified collection, has the same initial capacity
+            as the number of elements copied.
+            </summary>
+            <param name="collection">Collection to copy elements from.</param>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.Enqueue(`0)">
+            <summary>
+            Adds an element to the end of the Queue.
+            </summary>
+            <param name="data">Element to add.</param>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.Dequeue">
+            <summary>
+            Removes and returns the object at the beginning of the Queue.
+            </summary>
+            <returns>Object at the beginning of the Queue.</returns>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.Peek">
+            <summary>
+            Returns the object at the beginning of the without removing it.
+            </summary>
+            <returns>The object at the beginning of the Queue.</returns>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.Clear">
+            <summary>
+            Removes all Objects from the queue.
+            </summary>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.Contains(`0)">
+            <summary>
+            Determines whether an element is in the Queue.
+            </summary>
+            <param name="data">Item.</param>
+            <returns>True if contains. False if doesn't.</returns>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+        <member name="M:QueueLibrary.Queue`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+    </members>
+</doc>

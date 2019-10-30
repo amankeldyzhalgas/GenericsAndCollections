@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StreamLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:StreamLibrary.Stream">
+            <summary>
+            A class Implements an algorithm that allows
+            to determine the frequency of occurrences of words in the text.
+            </summary>
+        </member>
+        <member name="M:StreamLibrary.Stream.FrequencyWords(System.String,System.Collections.Generic.List{System.String})">
+            <summary>
+            A function that allows to determine the frequency of occurrences of words in the text..
+            </summary>
+            <param name="filePath">The filePath path.</param>
+            <param name="words">Words.</param>
+            <returns>The frequency of occurrences.</returns>
+        </member>
+    </members>
+</doc>

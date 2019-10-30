@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StackLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:StackLibrary.Node`1">
+            <summary>
+            A class that will represent a single Set object.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:StackLibrary.Node`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StackLibrary.Node`1"/> class.
+            </summary>
+            <param name="data">Element.</param>
+        </member>
+        <member name="P:StackLibrary.Node`1.Data">
+            <summary>
+            Gets or sets Element.
+            </summary>
+        </member>
+        <member name="P:StackLibrary.Node`1.Next">
+            <summary>
+            Gets or sets link to the next Node.
+            </summary>
+        </member>
+        <member name="T:StackLibrary.Stack`1">
+            <summary>
+            Stack.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:StackLibrary.Stack`1.IsEmpty">
+            <summary>
+            Gets a value indicating whether returns an empty Set.
+            </summary>
+            <returns>True if empty. False if doesn't.</returns>
+        </member>
+        <member name="M:StackLibrary.Stack`1.Push(`0)">
+            <summary>
+            Push an element to the Stack.
+            </summary>
+            <param name="item">Element to add.</param>
+        </member>
+        <member name="M:StackLibrary.Stack`1.Pop">
+            <summary>
+            Push an element from the Stack.
+            </summary>
+            <returns>Removed element.</returns>
+        </member>
+        <member name="M:StackLibrary.Stack`1.Peek">
+            <summary>
+            Returns the object at the beginning of the without removing it.
+            </summary>
+            <returns>The object at the beginning of the Stack.</returns>
+        </member>
+        <member name="M:StackLibrary.Stack`1.GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+        <member name="M:StackLibrary.Stack`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+    </members>
+</doc>

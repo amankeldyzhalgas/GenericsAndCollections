@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FibonacciNumbersLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:FibonacciNumbersLibrary.FibonacciNumbers">
+            <summary>
+            Generates Fibonacci sequence.
+            </summary>
+        </member>
+        <member name="M:FibonacciNumbersLibrary.FibonacciNumbers.Fibonacci(System.Int32)">
+            <summary>
+            Generates the fibonacci.
+            </summary>
+            <param name="count">Length of the sequence.</param>
+            <returns>Fibonacci.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SetLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:SetLibrary.Node`1">
+            <summary>
+            A class that will represent a single Set object.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:SetLibrary.Node`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SetLibrary.Node`1"/> class.
+            </summary>
+            <param name="data">Element.</param>
+        </member>
+        <member name="P:SetLibrary.Node`1.Data">
+            <summary>
+            Gets or sets Element.
+            </summary>
+        </member>
+        <member name="P:SetLibrary.Node`1.Next">
+            <summary>
+            Gets or sets link to the next Node.
+            </summary>
+        </member>
+        <member name="T:SetLibrary.Set`1">
+            <summary>
+            Set.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:SetLibrary.Set`1.IsEmpty">
+            <summary>
+            Gets a value indicating whether returns an empty Set.
+            </summary>
+            <returns>True if empty. False if doesn't.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Add(`0)">
+            <summary>
+            Add data to the set.
+            </summary>
+            <param name="data">Element to add.</param>
+        </member>
+        <member name="M:SetLibrary.Set`1.Remove(`0)">
+            <summary>
+            Remove the element from the set.
+            </summary>
+            <param name="data">Element to remove.</param>
+        </member>
+        <member name="M:SetLibrary.Set`1.Union(SetLibrary.Set{`0})">
+            <summary>
+            Returns the set union, which means unique elements.
+            that appear in either of two collections.
+            </summary>
+            <param name="set">Set.</param>
+            <returns>New Set.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Concat(SetLibrary.Set{`0})">
+            <summary>
+            Produces the set union.
+            </summary>
+            <param name="set">Set.</param>
+            <returns>New Set.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Intersect(SetLibrary.Set{`0})">
+            <summary>
+            Returns the set intersection, which means elements.
+            that appear in each of two collections.
+            </summary>
+            <param name="set">Set.</param>
+            <returns>New Set.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Except(SetLibrary.Set{`0})">
+            <summary>
+            Returns the set difference, which means the elements of one collection.
+            that do not appear in a second collection.
+            </summary>
+            <param name="set">Set.</param>
+            <returns>New Set.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Distinct">
+            <summary>
+            Removes duplicate values from a collection.
+            </summary>
+            <returns>New Set.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.Contains(`0)">
+            <summary>
+            Determines whether an element is in the Set.
+            </summary>
+            <param name="data">Data.</param>
+            <returns>True if contains. False if doesn't.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+        <member name="M:SetLibrary.Set`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the set.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinarySearchLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:BinarySearchLibrary.BinarySearch">
+            <summary>
+            Binary Search.
+            </summary>
+        </member>
+        <member name="M:BinarySearchLibrary.BinarySearch.Search``1(``0[],``0,System.Collections.Generic.IComparer{``0})">
+            <summary>
+            Binary Search.
+            </summary>
+            <typeparam name="T">Type of array.</typeparam>
+            <param name="array">Array for searching.</param>
+            <param name="element">The element, which will be found.</param>
+            <param name="comparer">The comparer.</param>
+            <returns>Position of element in array. If there is no such element returns -1.</returns>
+        </member>
+        <member name="M:BinarySearchLibrary.BinarySearch.Search``1(``0[],``0,System.Comparison{``0})">
+            <summary>
+            Binary Search.
+            </summary>
+            <typeparam name="T">Type of array.</typeparam>
+            <param name="array">Array for searching.</param>
+            <param name="element">The element.</param>
+            <param name="comparison">The comparison.</param>
+            <returns>Position of element in array. </returns>
+        </member>
+    </members>
+</doc>
