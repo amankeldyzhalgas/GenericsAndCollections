@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BinarySearchTreeLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:BinarySearchTreeLibrary.BinarySearchTree`1">
+            <summary>
+            BinarySearchTree.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.IsEmpty">
+            <summary>
+            Gets a value indicating whether returns an empty Set.
+            </summary>
+            <returns>True if empty. False if doesn't.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
+            </summary>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
+            </summary>
+            <param name="elements">collection for initialization.</param>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Comparison{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
+            </summary>
+            <param name="elements">collection for initialization.</param>
+            <param name="comparison">compare two elements.</param>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
+            </summary>
+            <param name="elements">collection for initialization.</param>
+            <param name="comparer">compare two elements.</param>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Add(`0)">
+            <summary>
+            Add data to the set.
+            </summary>
+            <param name="data">Element to add.</param>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Remove(`0)">
+            <summary>
+            Remove element from the binary tree.
+            </summary>
+            <param name="data">element which must be removed.</param>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Contains(`0)">
+            <summary>
+            Determines whether an element is in the BinaryTree.
+            </summary>
+            <param name="data">Data.</param>
+            <returns>True if contains. False if doesn't.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Preorder">
+            <summary>
+            Traverse in the pre order.
+            </summary>
+            <returns>collection by current traversal.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Inorder">
+            <summary>
+            Traverse in the in order.
+            </summary>
+            <returns>collection by current traversal.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Postorder">
+            <summary>
+            Traverse in the post order.
+            </summary>
+            <returns>collection by current traversal.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the binary tree.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Return an enumerator that iterates over the binary tree.
+            </summary>
+            <returns> An enumerator that can be used to iterate through a collection.</returns>
+        </member>
+        <member name="T:BinarySearchTreeLibrary.Node`1">
+            <summary>
+            A class that will represent a single BinaryTree object.
+            </summary>
+            <typeparam name="T">Type of object.</typeparam>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.Node`1.#ctor(`0)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.Node`1"/> class.
+            </summary>
+            <param name="data">Element.</param>
+        </member>
+        <member name="P:BinarySearchTreeLibrary.Node`1.Data">
+            <summary>
+            Gets or sets Element.
+            </summary>
+        </member>
+        <member name="P:BinarySearchTreeLibrary.Node`1.Left">
+            <summary>
+            Gets or sets link to the Left Node.
+            </summary>
+        </member>
+        <member name="P:BinarySearchTreeLibrary.Node`1.Right">
+            <summary>
+            Gets or sets link to the Right  Node.
+            </summary>
+        </member>
+    </members>
+</doc>

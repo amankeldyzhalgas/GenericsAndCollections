@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="BinarySearchTree.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace BinarySearchTreeLibrary
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// BinarySearchTree.
+    /// </summary>
+    /// <typeparam name="T">Type of object.</typeparam>
     public class BinarySearchTree<T> : IEnumerable<T>
     {
         private Node<T> Root { get; set; }
@@ -26,28 +31,53 @@ namespace BinarySearchTreeLibrary
         /// </summary>
         public BinarySearchTree()
         {
-            Root = null;
-            Count = 0;
+            this.Root = null;
+            this.Count = 0;
 
             if (!typeof(IComparable<T>).IsAssignableFrom(typeof(T)))
             {
                 throw new ArgumentException($"The {typeof(T)} not implement IComparable");
             }
 
-            Comparison = Comparer<T>.Default.Compare;
+            this.Comparison = Comparer<T>.Default.Compare;
         }
 
         /// <summary>
-        /// Constructor which takes collection for initialization 
+        /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
         /// </summary>
-        /// /// <exception cref="ArgumentException">Thrown when type T not implement IComparable</exception>
-        /// <param name="elements">collection for initialization</param>
-        public BinarySearchTree(IEnumerable<T> elements) : this()
+        /// <param name="elements">collection for initialization.</param>
+        public BinarySearchTree(IEnumerable<T> elements)
+            : this()
         {
             foreach (T item in elements)
             {
                 this.Add(item);
             }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
+        /// </summary>
+        /// <param name="elements">collection for initialization.</param>
+        /// <param name="comparison">compare two elements.</param>
+        public BinarySearchTree(IEnumerable<T> elements, Comparison<T> comparison)
+        {
+            this.Comparison = comparison ?? throw new ArgumentNullException($"Comparer {nameof(comparison)} haves null value");
+
+            foreach (T item in elements)
+            {
+                this.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
+        /// </summary>
+        /// <param name="elements">collection for initialization.</param>
+        /// <param name="comparer">compare two elements.</param>
+        public BinarySearchTree(IEnumerable<T> elements, IComparer<T> comparer)
+            : this(elements, comparer.Compare)
+        {
         }
 
         /// <summary>
@@ -94,11 +124,10 @@ namespace BinarySearchTreeLibrary
             }
         }
 
-
         /// <summary>
-        /// Remove element from the binary tree
+        /// Remove element from the binary tree.
         /// </summary>
-        /// <param name="data">element which must be removed</param>
+        /// <param name="data">element which must be removed.</param>
         public void Remove(T data)
         {
             if (data == null)
@@ -235,7 +264,7 @@ namespace BinarySearchTreeLibrary
         /// <summary>
         /// Traverse in the pre order.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>collection by current traversal.</returns>
         public IEnumerable<T> Preorder()
         {
             if (this.Root is null)
@@ -243,13 +272,13 @@ namespace BinarySearchTreeLibrary
                 throw new InvalidOperationException("The tree is empty.");
             }
 
-            return Preorder(this.Root);
+            return this.Preorder(this.Root);
         }
 
         /// <summary>
         /// Traverse in the in order.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>collection by current traversal.</returns>
         public IEnumerable<T> Inorder()
         {
             if (this.Root is null)
@@ -257,13 +286,13 @@ namespace BinarySearchTreeLibrary
                 throw new InvalidOperationException("The tree is empty.");
             }
 
-            return Inorder(this.Root);
+            return this.Inorder(this.Root);
         }
 
         /// <summary>
         /// Traverse in the post order.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>collection by current traversal.</returns>
         public IEnumerable<T> Postorder()
         {
             if (this.Root is null)
@@ -271,7 +300,7 @@ namespace BinarySearchTreeLibrary
                 throw new InvalidOperationException("Tree is empty!");
             }
 
-            return Postorder(this.Root);
+            return this.Postorder(this.Root);
         }
 
         private IEnumerable<T> Preorder(Node<T> node)
@@ -279,7 +308,7 @@ namespace BinarySearchTreeLibrary
             yield return node.Data;
             if (node.Left != null)
             {
-                foreach (var item in Preorder(node.Left))
+                foreach (var item in this.Preorder(node.Left))
                 {
                     yield return item;
                 }
@@ -287,7 +316,7 @@ namespace BinarySearchTreeLibrary
 
             if (node.Right != null)
             {
-                foreach (var item in Preorder(node.Right))
+                foreach (var item in this.Preorder(node.Right))
                 {
                     yield return item;
                 }
@@ -298,7 +327,7 @@ namespace BinarySearchTreeLibrary
         {
             if (node.Left != null)
             {
-                foreach (var element in Inorder(node.Left))
+                foreach (var element in this.Inorder(node.Left))
                 {
                     yield return element;
                 }
@@ -308,7 +337,7 @@ namespace BinarySearchTreeLibrary
 
             if (node.Right != null)
             {
-                foreach (var element in Inorder(node.Right))
+                foreach (var element in this.Inorder(node.Right))
                 {
                     yield return element;
                 }
@@ -317,10 +346,9 @@ namespace BinarySearchTreeLibrary
 
         private IEnumerable<T> Postorder(Node<T> node)
         {
-
             if (node.Left != null)
             {
-                foreach (var element in Inorder(node.Left))
+                foreach (var element in this.Inorder(node.Left))
                 {
                     yield return element;
                 }
@@ -328,7 +356,7 @@ namespace BinarySearchTreeLibrary
 
             if (node.Right != null)
             {
-                foreach (var element in Inorder(node.Right))
+                foreach (var element in this.Inorder(node.Right))
                 {
                     yield return element;
                 }
@@ -337,14 +365,22 @@ namespace BinarySearchTreeLibrary
             yield return node.Data;
         }
 
+        /// <summary>
+        /// Return an enumerator that iterates over the binary tree.
+        /// </summary>
+        /// <returns> An enumerator that can be used to iterate through a collection.</returns>
         public IEnumerator<T> GetEnumerator()
         {
-            return this.GetEnumerator();
+            return this.Inorder().GetEnumerator();
         }
 
+        /// <summary>
+        /// Return an enumerator that iterates over the binary tree.
+        /// </summary>
+        /// <returns> An enumerator that can be used to iterate through a collection.</returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return Inorder().GetEnumerator();
+            return this.GetEnumerator();
         }
     }
 }

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Text;
 
 namespace BinarySearchTreeLibrary.Tests.TestClasses
 {
@@ -22,17 +19,7 @@ namespace BinarySearchTreeLibrary.Tests.TestClasses
 
         public int CompareTo(Book book)
         {
-            if (this.Price.Equals(book.Price))
-            {
-                return 0;
-            }
-
-            if(this.Price < book.Price)
-            {
-                return -1;
-            }
-
-            return 1;
+            return Price.CompareTo(book.Price);
         }
     }
 }
