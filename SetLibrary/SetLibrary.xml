@@ -38,6 +38,17 @@
             </summary>
             <returns>True if empty. False if doesn't.</returns>
         </member>
+        <member name="M:SetLibrary.Set`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SetLibrary.Set`1"/> class.
+            </summary>
+        </member>
+        <member name="M:SetLibrary.Set`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:SetLibrary.Set`1"/> class.
+            </summary>
+            <param name="collection">Collection to copy elements from.</param>
+        </member>
         <member name="M:SetLibrary.Set`1.Add(`0)">
             <summary>
             Add data to the set.

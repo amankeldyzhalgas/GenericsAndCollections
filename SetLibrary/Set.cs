@@ -28,6 +28,32 @@ namespace SetLibrary
         public bool IsEmpty() => this.Count == 0;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Set{T}"/> class.
+        /// </summary>
+        public Set()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Set{T}"/> class.
+        /// </summary>
+        /// <param name="collection">Collection to copy elements from.</param>
+        public Set(IEnumerable<T> collection)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException($"Collection {nameof(collection)} haves null value");
+            }
+
+            IEnumerator<T> enumerator = collection.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                this.Add(enumerator.Current);
+            }
+        }
+
+        /// <summary>
         /// Add data to the set.
         /// </summary>
         /// <param name="data">Element to add.</param>

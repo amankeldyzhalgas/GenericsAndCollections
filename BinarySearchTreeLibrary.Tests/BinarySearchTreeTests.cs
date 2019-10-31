@@ -74,6 +74,7 @@ namespace BinarySearchTreeLibrary.Tests
                 new Point(4, 0),
                 new Point(0, 4),
             };
+
             var expected = new BinarySearchTree<Point>()
             {
                 new Point(0, 4),

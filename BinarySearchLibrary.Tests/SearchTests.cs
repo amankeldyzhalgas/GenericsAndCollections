@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace BinarySearchLibrary.Tests
@@ -9,25 +10,26 @@ namespace BinarySearchLibrary.Tests
         [TestCase(new int[] { 0, 1, 3, 4, 6, 7 }, 4, 3)]
         [TestCase(new int[] { 0, 1, 3, 4, 6, 7 }, 0, 0)]
         [TestCase(new int[] { 0, 1, 3, 4, 6, 7 }, 7, 5)]
-        public void BinarySearch_Int(int[] array, int element, int expectedResult)
-        {
-            Assert.AreEqual(expectedResult, BinarySearch.Search(array, element, Comparer<int>.Default));
-        }
+        public void Int_BinarySearch(int[] array, int element, int expectedResult) 
+            => Assert.AreEqual(expectedResult, BinarySearch.Search(array, element, Comparer<int>.Default));
 
-        [TestCase(new double[] { 0.312, 1.235, 3.56, 5.002, 7.1234, 9.1231 }, 3.56, ExpectedResult = 2)]
-        [TestCase(new double[] { 0.312, 0.312123, 0.3128797, 0.31299999 }, 0.3128797, ExpectedResult = 2)]
-        public int? BinarySearch_Double(double[] array, double element)
-        {
-            return BinarySearch.Search(array, element, Comparer<double>.Default);
-        }
+        [TestCase(new double[] { 0.2, 1.3, 4.6, 5.2, 7.4, 8.1 }, 4.6, ExpectedResult = 2)]
+        [TestCase(new double[] { 0.12, 1.121,  1.1212, 1.123, 0.124, 1.126}, 1.121, ExpectedResult = 1)]
+        public int? Double_BinarySearch(double[] array, double element) 
+            => BinarySearch.Search(array, element, Comparer<double>.Default);
 
-        [TestCase(new string[] { "aaaa", "aaaaa", "ab", "bv", "vc" }, "ab", 2)]
-        [TestCase(new string[] { "aaaa", "aaaaa", "ab", "bv", "vc" }, "aaaa", 0)]
-        [TestCase(new string[] { "aaaa", "aaaaa", "ab", "bv", "vc" }, "aaaaa", 1)]
-        [TestCase(new string[] { "aaaa", "aaaaa", "ab", "bv", "vc" }, "vc", 4)]
-        public void BinarySearch_String(string[] array, string element, int expectedResult)
-        {
-            Assert.AreEqual(expectedResult, BinarySearch.Search(array, element, Comparer<string>.Default));
-        }
+        [TestCase(new string[] { "aaa", "ab", "ba", "bba", "bbb" }, "ab", 1)]
+        [TestCase(new string[] { "aaa", "ab", "ba", "bba", "bbb" }, "bba", 3)]
+        public void String_BinarySearch(string[] array, string element, int expectedResult) 
+            => Assert.AreEqual(expectedResult, BinarySearch.Search(array, element, Comparer<string>.Default));
+
+        [TestCase(null, "aaa")]
+        [TestCase(new string[] { "aaa", "ab", "ba", "bba", "bbb" }, null)]
+        public void NullException_BinarySearch(string[] array, string element) 
+            => Assert.Throws<ArgumentNullException>(() => BinarySearch.Search(array, element, Comparer<string>.Default));
+
+        [TestCase(new string[] { "aaa", "ab", "ba", "bba", "bbb" }, "bbc")]
+        public void Exception_BinarySearch(string[] array, string element) 
+            => Assert.Throws<ArgumentException>(() => BinarySearch.Search(array, element, Comparer<string>.Default));
     }
 }

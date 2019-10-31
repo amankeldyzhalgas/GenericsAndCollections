@@ -25,6 +25,32 @@ namespace StackLibrary
         public bool IsEmpty() => this.Count == 0;
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Stack{T}"/> class.
+        /// </summary>
+        public Stack()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Stack{T}"/> class.
+        /// </summary>
+        /// <param name="collection">Collection to copy elements from.</param>
+        public Stack(IEnumerable<T> collection)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException($"Collection {nameof(collection)} haves null value");
+            }
+
+            IEnumerator<T> enumerator = collection.GetEnumerator();
+
+            while (enumerator.MoveNext())
+            {
+                this.Push(enumerator.Current);
+            }
+        }
+
+        /// <summary>
         /// Push an element to the Stack.
         /// </summary>
         /// <param name="item">Element to add.</param>
@@ -44,7 +70,7 @@ namespace StackLibrary
         }
 
         /// <summary>
-        /// Push an element from the Stack.
+        /// Returns the object at the beginning of the with removing it.
         /// </summary>
         /// <returns>Removed element.</returns>
         public T Pop()

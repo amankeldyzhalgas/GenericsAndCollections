@@ -25,8 +25,7 @@ namespace RPNLibrary
 
         private string Calculate(string arg)
         {
-            decimal num;
-            bool isNum = decimal.TryParse(arg, out num);
+            bool isNum = decimal.TryParse(arg, out decimal num);
             if (isNum)
                 Stack.Push(num);
             else

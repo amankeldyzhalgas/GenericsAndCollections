@@ -38,6 +38,17 @@
             </summary>
             <returns>True if empty. False if doesn't.</returns>
         </member>
+        <member name="M:StackLibrary.Stack`1.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StackLibrary.Stack`1"/> class.
+            </summary>
+        </member>
+        <member name="M:StackLibrary.Stack`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StackLibrary.Stack`1"/> class.
+            </summary>
+            <param name="collection">Collection to copy elements from.</param>
+        </member>
         <member name="M:StackLibrary.Stack`1.Push(`0)">
             <summary>
             Push an element to the Stack.
@@ -46,7 +57,7 @@
         </member>
         <member name="M:StackLibrary.Stack`1.Pop">
             <summary>
-            Push an element from the Stack.
+            Returns the object at the beginning of the with removing it.
             </summary>
             <returns>Removed element.</returns>
         </member>

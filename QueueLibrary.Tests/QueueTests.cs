@@ -50,14 +50,14 @@ namespace QueueLibrary.Tests
         }
 
         [Test]
-        public void ConstructorTest_InputIncorrectData_ArgumentNullException()
+        public void NullException_Test()
             => Assert.Throws<ArgumentNullException>(() => new Queue<string>().Enqueue(null));
 
         [TestCase(new int[] { -1 }, ExpectedResult = -1)]
         [TestCase(new int[] { 12, 15 }, ExpectedResult = 12)]
         [TestCase(new int[] { 154, 18, 295 }, ExpectedResult = 154)]
         [TestCase(new int[] { 13, 17, 18, 19, 20, 21, 23, 11 }, ExpectedResult = 13)]
-        public int PeekTest_DifferentValues_AssertInputedValues(int[] sourceArray)
+        public int PeekTest_Test(int[] sourceArray)
             => new Queue<int>(sourceArray).Peek();
     }
 }
