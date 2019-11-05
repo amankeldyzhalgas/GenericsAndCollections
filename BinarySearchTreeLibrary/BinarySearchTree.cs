@@ -16,7 +16,7 @@ namespace BinarySearchTreeLibrary
     {
         private Node<T> Root { get; set; }
 
-        private Comparison<T> Comparison { get; set; }
+        private IComparer<T> Comparer { get; set; }
 
         private int Count { get; set; }
 
@@ -30,16 +30,34 @@ namespace BinarySearchTreeLibrary
         /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
         /// </summary>
         public BinarySearchTree()
+            : this(Comparer<T>.Default)
         {
-            this.Root = null;
-            this.Count = 0;
+        }
 
-            if (!typeof(IComparable<T>).IsAssignableFrom(typeof(T)))
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
+        /// </summary>
+        /// <param name="comparer">Compare two elements.</param>
+        public BinarySearchTree(IComparer<T> comparer)
+        {
+            if (comparer is null)
             {
-                throw new ArgumentException($"The {typeof(T)} not implement IComparable");
+                this.Comparer = Comparer<T>.Default;
             }
 
-            this.Comparison = Comparer<T>.Default.Compare;
+            this.Comparer = comparer;
+            try
+            {
+                comparer.Compare(default, default);
+            }
+            catch (NullReferenceException ex)
+            {
+                throw ex;
+            }
+            catch (ArgumentException ex)
+            {
+                throw ex;
+            }
         }
 
         /// <summary>
@@ -47,27 +65,8 @@ namespace BinarySearchTreeLibrary
         /// </summary>
         /// <param name="elements">collection for initialization.</param>
         public BinarySearchTree(IEnumerable<T> elements)
-            : this()
+            : this(elements, Comparer<T>.Default)
         {
-            foreach (T item in elements)
-            {
-                this.Add(item);
-            }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BinarySearchTree{T}"/> class.
-        /// </summary>
-        /// <param name="elements">collection for initialization.</param>
-        /// <param name="comparison">compare two elements.</param>
-        public BinarySearchTree(IEnumerable<T> elements, Comparison<T> comparison)
-        {
-            this.Comparison = comparison ?? throw new ArgumentNullException($"Comparer {nameof(comparison)} haves null value");
-
-            foreach (T item in elements)
-            {
-                this.Add(item);
-            }
         }
 
         /// <summary>
@@ -76,8 +75,12 @@ namespace BinarySearchTreeLibrary
         /// <param name="elements">collection for initialization.</param>
         /// <param name="comparer">compare two elements.</param>
         public BinarySearchTree(IEnumerable<T> elements, IComparer<T> comparer)
-            : this(elements, comparer.Compare)
+            : this(comparer)
         {
+            foreach (T item in elements)
+            {
+                this.Add(item);
+            }
         }
 
         /// <summary>
@@ -103,7 +106,7 @@ namespace BinarySearchTreeLibrary
                 while (current != null)
                 {
                     parent = current;
-                    if (this.Comparison(data, current.Data) < 0)
+                    if (this.Comparer.Compare(data, current.Data) < 0)
                     {
                         current = current.Left;
                     }
@@ -113,7 +116,7 @@ namespace BinarySearchTreeLibrary
                     }
                 }
 
-                if (this.Comparison(data, parent.Data) < 0)
+                if (this.Comparer.Compare(data, parent.Data) < 0)
                 {
                     parent.Left = node;
                 }
@@ -122,6 +125,8 @@ namespace BinarySearchTreeLibrary
                     parent.Right = node;
                 }
             }
+
+            ++this.Count;
         }
 
         /// <summary>
@@ -137,9 +142,9 @@ namespace BinarySearchTreeLibrary
 
             Node<T> current = this.Root;
             Node<T> parent = null;
-            while (this.Comparison(data, current.Data) != 0)
+            while (this.Comparer.Compare(data, current.Data) != 0)
             {
-                if (this.Comparison(data, current.Data) < 0)
+                if (this.Comparer.Compare(data, current.Data) < 0)
                 {
                     parent = current;
                     current = current.Left;
@@ -167,7 +172,7 @@ namespace BinarySearchTreeLibrary
                 }
                 else
                 {
-                    if (this.Comparison(current.Data, parent.Data) < 0)
+                    if (this.Comparer.Compare(current.Data, parent.Data) < 0)
                     {
                         parent.Left = current.Left;
                     }
@@ -186,7 +191,7 @@ namespace BinarySearchTreeLibrary
                 }
                 else
                 {
-                    if (this.Comparison(current.Data, parent.Data) < 0)
+                    if (this.Comparer.Compare(current.Data, parent.Data) < 0)
                     {
                         parent.Left = current.Right;
                     }
@@ -216,7 +221,7 @@ namespace BinarySearchTreeLibrary
                 }
                 else
                 {
-                    if (this.Comparison(current.Data, parent.Data) < 0)
+                    if (this.Comparer.Compare(current.Data, parent.Data) < 0)
                     {
                         parent.Left = minElement;
                     }
@@ -240,25 +245,16 @@ namespace BinarySearchTreeLibrary
                 throw new ArgumentNullException($"Element {nameof(data)} haves null value");
             }
 
-            Node<T> current = this.Root;
-            while (current != null)
-            {
-                if (this.Comparison(data, current.Left.Data) == 0)
-                {
-                    return true;
-                }
+            return this.Find(data, this.Root) != null;
+        }
 
-                if (this.Comparison(data, current.Left.Data) < 0)
-                {
-                    current = current.Left;
-                }
-                else
-                {
-                    current = current.Right;
-                }
-            }
-
-            return false;
+        /// <summary>
+        /// Clear Tree.
+        /// </summary>
+        public void Clear()
+        {
+            this.Root = null;
+            this.Count = 0;
         }
 
         /// <summary>
@@ -363,6 +359,28 @@ namespace BinarySearchTreeLibrary
             }
 
             yield return node.Data;
+        }
+
+        private Node<T> Find(T element, Node<T> node)
+        {
+            if (node is null)
+            {
+                return null;
+            }
+
+            if (this.Comparer.Compare(node.Data, element) == 0)
+            {
+                return node;
+            }
+
+            if (this.Comparer.Compare(node.Data, element) > 0)
+            {
+                return this.Find(element, node.Left);
+            }
+            else
+            {
+                return this.Find(element, node.Right);
+            }
         }
 
         /// <summary>

@@ -15,19 +15,9 @@ namespace BinarySearchTreeLibrary.Tests.TestClasses
             this.y = y;
         }
 
-        public int CompareTo([AllowNull] Point other)
+        public int CompareTo([AllowNull] Point point)
         {
-            if (this.x == other.x && this.y == other.y)
-            {
-                return 0;
-            }
-
-            if (this.x < other.x || this.y < other.y)
-            {
-                return -1;
-            }
-
-            return 1;
+            return (this.x + this.y).CompareTo(point.x + point.y);
         }
     }
 }

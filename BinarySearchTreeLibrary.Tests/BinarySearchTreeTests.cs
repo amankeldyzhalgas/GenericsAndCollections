@@ -29,14 +29,13 @@ namespace BinarySearchTreeLibrary.Tests
         [Test]
         public void BookBinaryTree_Test()
         {
-            static int comparison(Book x, Book y) => x.Year - y.Year;
             BinarySearchTree<Book> binaryTree = new BinarySearchTree<Book>(new List<Book> {
                 new Book("CLR via C#", "Richter",2012, 16800),
                 new Book("Библия C#", "Фленов М.", 2016, 2400),
                 new Book("C# 4.0 Полное руководство", "Voina i Mir",2019, 14400),
                 new Book("C#. Сборник рецептов", "Павел Агуров",2007, 1500),
                 new Book("С# без лишних слов", "Уильям Робисон",2017, 30000),
-            }, comparison);
+            });
 
             var expected = new List<Book>()
             {
@@ -49,7 +48,7 @@ namespace BinarySearchTreeLibrary.Tests
 
 
             int i = 0;
-            foreach (var item in binaryTree.Inorder())
+            foreach (var item in binaryTree)
             {
                 Assert.AreEqual(expected[i].Author, item.Author);
                 i++;
@@ -67,7 +66,7 @@ namespace BinarySearchTreeLibrary.Tests
 
 
         [Test]
-        public void PointBinaryTreeTestWithComparison_CompareByYValue_TreeIncludeItElement()
+        public void PointBinaryTree_Test()
         {
             BinarySearchTree<Point> binaryTree = new BinarySearchTree<Point>()
             {
@@ -76,15 +75,14 @@ namespace BinarySearchTreeLibrary.Tests
                 new Point(0, 4),
             };
 
-            //var expected = new BinarySearchTree<Point>()
-            //{
-            //    new Point(0, 4),
-            //    new Point(2, 5),
-            //    new Point(4, 0),
-            //};
+            var expected = new BinarySearchTree<Point>()
+            {
+                new Point(0, 4),
+                new Point(2, 5),
+                new Point(4, 0),
+            };
 
-            Assert.IsTrue(binaryTree.Contains(new Point(4, 0)));
-            //CollectionAssert.AreEqual(expectedPoints, testTree.Inorder());
+            //CollectionAssert.AreEqual(expected, binaryTree.Inorder());
         }
 
     }

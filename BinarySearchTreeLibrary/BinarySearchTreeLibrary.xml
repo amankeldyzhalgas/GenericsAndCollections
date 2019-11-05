@@ -21,18 +21,17 @@
             Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
             </summary>
         </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
+            </summary>
+            <param name="comparer">Compare two elements.</param>
+        </member>
         <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
             <summary>
             Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
             </summary>
             <param name="elements">collection for initialization.</param>
-        </member>
-        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Comparison{`0})">
-            <summary>
-            Initializes a new instance of the <see cref="T:BinarySearchTreeLibrary.BinarySearchTree`1"/> class.
-            </summary>
-            <param name="elements">collection for initialization.</param>
-            <param name="comparison">compare two elements.</param>
         </member>
         <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.#ctor(System.Collections.Generic.IEnumerable{`0},System.Collections.Generic.IComparer{`0})">
             <summary>
@@ -59,6 +58,11 @@
             </summary>
             <param name="data">Data.</param>
             <returns>True if contains. False if doesn't.</returns>
+        </member>
+        <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Clear">
+            <summary>
+            Clear Tree.
+            </summary>
         </member>
         <member name="M:BinarySearchTreeLibrary.BinarySearchTree`1.Preorder">
             <summary>
